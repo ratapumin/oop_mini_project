@@ -41,15 +41,17 @@ public class Write_tum_yam {
         obj2.put("Product_Name", yum.getYname());
         obj2.put("Product_Price", yum.getYprice());
 
-        JSONObject Tum = new JSONObject();
-        Tum.put("Tum", obj1);
+        JSONArray Tum = new JSONArray();
+        Tum.add(obj1);
 
-        JSONObject Yum = new JSONObject();
-        Yum.put("Yum", obj2);
+        JSONArray Yum = new JSONArray();
+        Yum.add(obj2);
+        JSONObject type = new JSONObject();
+        type.put("Tum", Tum);
+        type.put("Yum", Yum);
 
         JSONArray Product = new JSONArray();
-        Product.add(Tum);
-        Product.add(Yum);
+        Product.add(type);
         tum.printInfo();
         yum.printInfo();
 

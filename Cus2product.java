@@ -1,14 +1,10 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.io.FileReader; 
+import java.util.Iterator; 
+import java.util.Map; 
+  
+import org.json.simple.JSONArray; 
+import org.json.simple.JSONObject; 
+import org.json.simple.parser.*; 
 
 public class Cus2product {
 
@@ -17,6 +13,7 @@ public class Cus2product {
         String product_no;
         String product_name;
         double product_price;
+        String cus2p[];
         Customer cus = new Customer();
         cus.setName("wan");
         cus.setPnumber("0621645650");
@@ -53,7 +50,6 @@ public class Cus2product {
 
             Iterator<JSONObject> iterator = product.iterator();
             System.out.println("==========================================");
-
             while (iterator.hasNext()) {
                 JSONObject tpye = iterator.next();
                 JSONObject Tum = (JSONObject) tpye.get("Tum");
