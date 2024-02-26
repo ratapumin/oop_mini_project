@@ -13,15 +13,15 @@ import java.util.Scanner;
 
 public class Cus2product {
 
-    public static void main(String[] args) {
+    public static void Customer() {
         int i = 0;
         String product_no;
         String product_name;
         double product_price;
         Customer cus = new Customer();
-        cus.setName("wan");
-        cus.setPnumber("0621645650");
-        cus.setTableno("T_12");
+        cus.setName("nior");
+        cus.setPnumber("06111223333");
+        cus.setTableno("T_13");
         cus.calDate();
         cus.printInfo();
 
