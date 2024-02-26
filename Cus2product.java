@@ -1,10 +1,14 @@
-import java.io.FileReader; 
-import java.util.Iterator; 
-import java.util.Map; 
-  
-import org.json.simple.JSONArray; 
-import org.json.simple.JSONObject; 
-import org.json.simple.parser.*; 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class Cus2product {
 
@@ -13,7 +17,6 @@ public class Cus2product {
         String product_no;
         String product_name;
         double product_price;
-        String cus2p[];
         Customer cus = new Customer();
         cus.setName("wan");
         cus.setPnumber("0621645650");
@@ -45,27 +48,28 @@ public class Cus2product {
 
         try {
             Reader readProduct = new FileReader("./Product.json");
+            JSONArray productArray = (JSONArray) parser.parse(readProduct);
 
-            JSONArray product = (JSONArray) parser.parse(readProduct);
+            for (Object obj : productArray) {
+                JSONObject productObject = (JSONObject) obj;
 
-            Iterator<JSONObject> iterator = product.iterator();
-            System.out.println("==========================================");
-            while (iterator.hasNext()) {
-                JSONObject tpye = iterator.next();
-                JSONObject Tum = (JSONObject) tpye.get("Tum");
-                System.out.println("Product: " + Tum.get("Product_No"));
-                System.out.println("Product: " + Tum.get("Product_Name"));
-                System.out.println("Product: " + Tum.get("Product_Price"));
-                Tum = iterator.next();
-                System.out.println("==========================================");
-                JSONObject Yum = (JSONObject) Tum.get("Yum");
-                System.out.println("Product: " + Yum.get("Product_No"));
-                System.out.println("Product: " + Yum.get("Product_Name"));
-                System.out.println("Product: " + Yum.get("Product_Price"));
-                i++;
+                JSONArray tumArray = (JSONArray) productObject.get("Tum");
+                JSONArray yumArray = (JSONArray) productObject.get("Yum");
 
+                for (Object tumObj : tumArray) {
+                    JSONObject tum = (JSONObject) tumObj;
+                    System.out.println("Product Tum: " + tum.get("Product_No"));
+                    System.out.println("Product Tum: " + tum.get("Product_Name"));
+                    System.out.println("Product Tum: " + tum.get("Product_Price"));
+                }
+
+                for (Object yumObj : yumArray) {
+                    JSONObject yum = (JSONObject) yumObj;
+                    System.out.println("Product Yum: " + yum.get("Product_No"));
+                    System.out.println("Product Yum: " + yum.get("Product_Name"));
+                    System.out.println("Product Yum: " + yum.get("Product_Price"));
+                }
             }
-            System.out.println("==========================================");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -80,93 +84,92 @@ public class Cus2product {
 
         try {
             Reader readProduct = new FileReader("./Product.json");
-            JSONArray product = (JSONArray) parser.parse(readProduct);
+            JSONArray productArray = (JSONArray) parser.parse(readProduct);
 
-            Iterator<JSONObject> iterator = product.iterator();
-            System.out.println("==========================================");
+            for (Object obj : productArray) {
+                JSONObject productObject = (JSONObject) obj;
 
-            boolean found = false;
+                JSONArray tumArray = (JSONArray) productObject.get("Tum");
+                JSONArray yumArray = (JSONArray) productObject.get("Yum");
 
-            while (iterator.hasNext()) {
-                JSONObject type = iterator.next();
-                JSONObject Tum = (JSONObject) type.get("Tum");
-                JSONObject Yum = (JSONObject) type.get("Yum");
+                for (Object tumObj : tumArray) {
+                    JSONObject tum = (JSONObject) tumObj;
+                    if (tum != null && product_no.equals(String.valueOf(tum.get("Product_No")))) {
 
-                if (Tum != null && product_no.equals(String.valueOf(Tum.get("Product_No")))) {
-                    found = true;
-                    // System.out.println("Product: " + Tum.get("Product_Name"));
-                    // System.out.println("Product: " + Tum.get("Product_Price"));
-                    Tum tum = new Tum();
-                    tum.setPno(((Long) Tum.get("Product_No")).intValue());
-                    tum.setTname((String) Tum.get("Product_Name"));
-                    tum.setTprice((double) Tum.get("Product_Price"));
+                        // System.out.println("Product Tum: " + tum.get("Product_No"));
+                        // System.out.println("Product Tum: " + tum.get("Product_Name"));
+                        // System.out.println("Product Tum: " + tum.get("Product_Price"));
 
-                    JSONObject cusOrder = new JSONObject();
+                        Tum tumm = new Tum();
+                        tumm.setPno(((Long) tum.get("Product_No")).intValue());
+                        tumm.setTname((String) tum.get("Product_Name"));
+                        tumm.setTprice((double) tum.get("Product_Price"));
 
-                    cusOrder.put("Customer_Name", cus.getName());
-                    cusOrder.put("Customer_Phone_number", cus.getPnumber());
-                    cusOrder.put("Customer_Table_No", cus.getTableno());
-                    cusOrder.put("Customer_Table_Date", cus.getTabledate());
-                    cusOrder.put("Product_No", tum.getPno());
-                    cusOrder.put("Product_Name", tum.getTname());
-                    cusOrder.put("Product_Price", tum.getTprice());
+                        JSONObject cusOrder = new JSONObject();
 
-                    JSONArray order = new JSONArray();
-                    order.add(cusOrder);
+                        cusOrder.put("Customer_Name", cus.getName());
+                        cusOrder.put("Customer_Phone_number", cus.getPnumber());
+                        cusOrder.put("Customer_Table_No", cus.getTableno());
+                        cusOrder.put("Customer_Table_Date", cus.getTabledate());
+                        cusOrder.put("Product_No", tumm.getPno());
+                        cusOrder.put("Product_Name", tumm.getTname());
+                        cusOrder.put("Product_Price", tumm.getTprice());
 
-                    try (FileWriter file = new FileWriter("./order.json")) {
-                        file.write(order.toString());
-                        System.out.println("Insert Data To Json Successfully");
-                    } catch (IOException e) {
-                        System.out.println("Handle exception can not found file");
-                        e.printStackTrace();
+                        JSONArray order = new JSONArray();
+                        order.add(cusOrder);
+
+                        try (FileWriter file = new FileWriter("./order.json")) {
+                            file.write(order.toString());
+                            System.out.println("Insert Data To Json Successfully");
+                        } catch (IOException e) {
+                            System.out.println("Handle exception can not found file");
+                            e.printStackTrace();
+
+                        }
 
                     }
+                }
+                for (Object yumObj : yumArray) {
+                    JSONObject yum = (JSONObject) yumObj;
+                    if (yum != null && product_no.equals(String.valueOf(yum.get("Product_No")))) {
+                        System.out.println("Product Yum: " + yum.get("Product_No"));
+                        System.out.println("Product Yum: " + yum.get("Product_Name"));
+                        System.out.println("Product Yum: " + yum.get("Product_Price"));
 
-                } else if (Yum != null && product_no.equals(String.valueOf(Yum.get("Product_No")))) {
-                    System.out.println("Product: " + Yum.get("Product_Name"));
-                    System.out.println("Product: " + Yum.get("Product_Price"));
-                    found = true;
+                        Tum yumm = new Tum();
+                        yumm.setPno(((Long) yum.get("Product_No")).intValue());
+                        yumm.setTname((String) yum.get("Product_Name"));
+                        yumm.setTprice((double) yum.get("Product_Price"));
 
-                    Yum yum = new Yum();
-                    yum.setPno(((Long) Yum.get("Product_No")).intValue());
-                    yum.setYname((String) Yum.get("Product_Name"));
-                    yum.setYprice((double) Yum.get("Product_Price"));
+                        JSONObject cusOrder = new JSONObject();
 
-                    JSONObject cusOrder = new JSONObject();
+                        cusOrder.put("Customer_Name", cus.getName());
+                        cusOrder.put("Customer_Phone_number", cus.getPnumber());
+                        cusOrder.put("Customer_Table_No", cus.getTableno());
+                        cusOrder.put("Customer_Table_Date", cus.getTabledate());
+                        cusOrder.put("Product_No", yumm.getPno());
+                        cusOrder.put("Product_Name", yumm.getTname());
+                        cusOrder.put("Product_Price", yumm.getTprice());
 
-                    cusOrder.put("Customer_Name", cus.getName());
-                    cusOrder.put("Customer_Phone_number", cus.getPnumber());
-                    cusOrder.put("Customer_Table_No", cus.getTableno());
-                    cusOrder.put("Customer_Table_Date", cus.getTabledate());
-                    cusOrder.put("Product_No", yum.getPno());
-                    cusOrder.put("Product_Name", yum.getYname());
-                    cusOrder.put("Product_Price", yum.getYprice());
+                        JSONArray order = new JSONArray();
+                        order.add(cusOrder);
 
-                    JSONArray order = new JSONArray();
-                    order.add(cusOrder);
+                        try (FileWriter file = new FileWriter("./order.json")) {
+                            file.write(order.toString());
+                            System.out.println("Insert Data To Json Successfully");
+                        } catch (IOException e) {
+                            System.out.println("Handle exception can not found file");
+                            e.printStackTrace();
 
-                    try (FileWriter file = new FileWriter("./order.json")) {
-                        file.write(order.toString());
-                        System.out.println("Insert Data To Json Successfully");
-                    } catch (IOException e) {
-                        System.out.println("Handle exception can not found file");
-                        e.printStackTrace();
-
+                        }
                     }
 
                 }
             }
-
-            if (!found) {
-                System.out.println("Cannot find product with the specified number.");
-            }
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
 }

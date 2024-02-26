@@ -19,7 +19,7 @@ public class readP {
             JSONArray tumarray = (JSONArray) jsonObject.get("Tum");
 
             Tum tum = new Tum();
-            tum.setPno(1002);
+            tum.setPno(1003);
             tum.setPstock(10);
             tum.setPstatus("Pass");
             tum.setPtype("T");
@@ -36,7 +36,6 @@ public class readP {
 
             tumarray.add(obj1);
 
-            // jsonArray.add(tumarray);
 
             try (FileWriter fileWriter = new FileWriter("./Product.json")) {
                 fileWriter.write(jsonArray.toJSONString());
