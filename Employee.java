@@ -1,6 +1,6 @@
 public class Employee extends Info {
     private String emp_no;
-    public double calproduct;
+    public double calprice;
 
     public Employee() {
     }
@@ -26,15 +26,14 @@ public class Employee extends Info {
         return emp_no;
     }
 
-    public void setCalproduct(double calproduct) {
-        this.calproduct = calproduct;
+    public void setCalprice(double calprice) {
+        this.calprice = calprice;
     }
 
-    public double getCalproduct() {
-        return calproduct;
+    public double getCalprice() {
+        return calprice;
     }
 
-    public double cal
 
 
 }

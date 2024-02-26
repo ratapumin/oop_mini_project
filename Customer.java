@@ -1,5 +1,7 @@
 import java.util.Date;
+import java.util.Locale;
 import java.lang.String;
+import java.text.SimpleDateFormat;
 
 public class Customer extends Info {
     public String table_no;
@@ -40,7 +42,13 @@ public class Customer extends Info {
 
     public void calDate() {
         table_date = new Date();
-        // System.out.println(table_date.toString());
+    }
+
+    public String getTableDateAsString() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        table_date = new Date();
+        return dateFormat.format(table_date);
     }
 
     public void printInfo() {

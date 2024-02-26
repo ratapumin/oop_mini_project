@@ -2,6 +2,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import java.text.SimpleDateFormat;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,7 +30,7 @@ public class Cus2product {
         obj1.put("Customer_Name", cus.getName());
         obj1.put("Customer_Phone_number", cus.getPnumber());
         obj1.put("Customer_Table_No", cus.getTableno());
-        obj1.put("Customer_Table_Date", cus.getTabledate());
+        obj1.put("Customer_Table_Date", cus.getTableDateAsString());
 
         JSONArray jsonarray = new JSONArray();
         jsonarray.add(obj1);
@@ -61,6 +62,8 @@ public class Cus2product {
                     System.out.println("Product Tum: " + tum.get("Product_No"));
                     System.out.println("Product Tum: " + tum.get("Product_Name"));
                     System.out.println("Product Tum: " + tum.get("Product_Price"));
+                    System.out.println("=============================================");
+
                 }
 
                 for (Object yumObj : yumArray) {
@@ -68,6 +71,8 @@ public class Cus2product {
                     System.out.println("Product Yum: " + yum.get("Product_No"));
                     System.out.println("Product Yum: " + yum.get("Product_Name"));
                     System.out.println("Product Yum: " + yum.get("Product_Price"));
+                    System.out.println("=============================================");
+
                 }
             }
         } catch (IOException e) {
@@ -110,7 +115,7 @@ public class Cus2product {
                         cusOrder.put("Customer_Name", cus.getName());
                         cusOrder.put("Customer_Phone_number", cus.getPnumber());
                         cusOrder.put("Customer_Table_No", cus.getTableno());
-                        cusOrder.put("Customer_Table_Date", cus.getTabledate());
+                        cusOrder.put("Customer_Table_Date", cus.getTableDateAsString());
                         cusOrder.put("Product_No", tumm.getPno());
                         cusOrder.put("Product_Name", tumm.getTname());
                         cusOrder.put("Product_Price", tumm.getTprice());
@@ -146,7 +151,7 @@ public class Cus2product {
                         cusOrder.put("Customer_Name", cus.getName());
                         cusOrder.put("Customer_Phone_number", cus.getPnumber());
                         cusOrder.put("Customer_Table_No", cus.getTableno());
-                        cusOrder.put("Customer_Table_Date", cus.getTabledate());
+                        cusOrder.put("Customer_Table_Date", cus.getTableDateAsString());
                         cusOrder.put("Product_No", yumm.getPno());
                         cusOrder.put("Product_Name", yumm.getTname());
                         cusOrder.put("Product_Price", yumm.getTprice());
