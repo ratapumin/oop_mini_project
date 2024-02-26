@@ -19,10 +19,10 @@ public class readP {
             JSONArray tumarray = (JSONArray) jsonObject.get("Tum");
 
             Tum tum = new Tum();
-            tum.setPno(1003);
+            tum.setPno(1004);
             tum.setPstock(10);
             tum.setPstatus("Pass");
-            tum.setPtype("T");
+            tum.setPtype("T"); 
             tum.setTname("Tum Thi");
             tum.setTprice(40);
 

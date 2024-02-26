@@ -26,6 +26,22 @@
                 "Product_Type": "T",
                 "Product_No": 1002,
                 "Product_Stock": 10
+            },
+            {
+                "Product_Status": "Pass",
+                "Product_Price": 40.0,
+                "Product_Name": "Tum Thi",
+                "Product_Type": "T",
+                "Product_No": 1003,
+                "Product_Stock": 10
+            },
+            {
+                "Product_Status": "Pass",
+                "Product_Price": 40.0,
+                "Product_Name": "Tum Thi",
+                "Product_Type": "T",
+                "Product_No": 1004,
+                "Product_Stock": 10
             }
         ]
     }
