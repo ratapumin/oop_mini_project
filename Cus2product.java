@@ -90,7 +90,8 @@ public class Cus2product {
         try {
             Reader readProduct = new FileReader("./Product.json");
             JSONArray productArray = (JSONArray) parser.parse(readProduct);
-
+            JSONArray ordersArray = new JSONArray();
+            // JSONArray newproduct = (JSONArray) ordersArray;
             for (Object obj : productArray) {
                 JSONObject productObject = (JSONObject) obj;
 
@@ -119,18 +120,7 @@ public class Cus2product {
                         cusOrder.put("Product_No", tumm.getPno());
                         cusOrder.put("Product_Name", tumm.getTname());
                         cusOrder.put("Product_Price", tumm.getTprice());
-
-                        JSONArray order = new JSONArray();
-                        order.add(cusOrder);
-
-                        try (FileWriter file = new FileWriter("./order.json")) {
-                            file.write(order.toString());
-                            System.out.println("Insert Data To Json Successfully");
-                        } catch (IOException e) {
-                            System.out.println("Handle exception can not found file");
-                            e.printStackTrace();
-
-                        }
+                        ordersArray.add(cusOrder);
 
                     }
                 }
@@ -156,21 +146,47 @@ public class Cus2product {
                         cusOrder.put("Product_Name", yumm.getTname());
                         cusOrder.put("Product_Price", yumm.getTprice());
 
-                        JSONArray order = new JSONArray();
-                        order.add(cusOrder);
+                        // JSONArray order = new JSONArray();
+                        ordersArray.add(cusOrder);
 
-                        try (FileWriter file = new FileWriter("./order.json")) {
-                            file.write(order.toString());
-                            System.out.println("Insert Data To Json Successfully");
-                        } catch (IOException e) {
-                            System.out.println("Handle exception can not found file");
-                            e.printStackTrace();
-
-                        }
                     }
 
                 }
+
             }
+            System.out.println("===================putorder====================");
+
+            try {
+                // Read the existing orders from order.json
+                Reader readOrder = new FileReader("./order.json");
+                JSONArray oldOrder = (JSONArray) parser.parse(readOrder);
+
+                // Create a new JSONObject to store the new orders
+                JSONObject newOrder = new JSONObject();
+
+                // Add the new orders array to the new order JSONObject
+                // newOrder.put("new_orders", ordersArray);
+
+                // Iterate over the old orders and append them to the new orders array
+                for (Object obj : ordersArray) {
+                    oldOrder.add(obj);
+                }
+                // oldOrder.add(newOrder);
+                // Write the merged orders back to order.json
+                try (FileWriter file = new FileWriter("./order.json")) {
+                    file.write(oldOrder.toString());
+                    System.out.println("Insert Data To Json Successfully");
+                } catch (IOException e) {
+                    System.out.println("Handle exception can not found file");
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                System.out.println("Handle exception can not found file");
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
