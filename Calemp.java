@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Calemp {
     public static void main(String[] agrs) {
         String emp_no;
+        double sumprice = 0.0;
         int i = 3;
         Scanner input = new Scanner(System.in);
 
@@ -30,12 +31,18 @@ public class Calemp {
             for (Object obj : orderArray) {
                 JSONObject objectOrder = (JSONObject) obj;
                 System.out.println("Order: " + objectOrder.get("Product_Name"));
+                System.out.println("Order: " + objectOrder.get("Product_Price"));
+
+                sumprice += Double.parseDouble(objectOrder.get("Product_Price").toString());
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        System.out.println("===================total price====================");
+        System.out.println("Total " + sumprice);
 
         // Iterator<JSONObject> iterator = orderArray.iterator();
         // while (iterator.hasNext()) {
