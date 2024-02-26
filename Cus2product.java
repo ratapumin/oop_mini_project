@@ -12,8 +12,43 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class Cus2product {
-
     public static void Customer() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n_______ETFOODORDERNG_______");
+            System.out.println("1.'Show menu'");
+            System.out.println("2.'My Bill'");
+            System.out.println("3. Return main menu");
+            System.out.println("___________________________");
+            System.out.println("\nType ur choice... ");
+
+            String choice = scanner.next();
+
+            if (choice.equalsIgnoreCase("1")) {
+                clearConsole();
+                ShowMenu();
+
+            } else if (choice.equalsIgnoreCase("2")) {
+                System.out.println("eiei ");
+
+            } else if (choice.equalsIgnoreCase("3")) {
+                clearConsole();
+                Index indexpage = new Index();
+                indexpage.Mainpage();
+                break;
+                // System.out.println("Exiting the program. Goodbye!");
+                // System.exit(0);
+            } else {
+                System.out.println("Invalid choice. Please try again.");
+
+            }
+        }
+
+    }
+
+    public static void ShowMenu() {
+
         int i = 0;
         String product_no;
         String product_name;
@@ -190,6 +225,25 @@ public class Cus2product {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                // For Windows
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // For Unix/Linux
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (final Exception e) {
+            // Handle exceptions
             e.printStackTrace();
         }
     }

@@ -71,7 +71,7 @@ public class Calemp {
 
             }
             System.out.println("Total : "+sumprice);
-            System.out.println("====================== End ======================");
+            System.out.println("===================== End ======================");
 
         } catch (IOException e) {
             e.printStackTrace();
