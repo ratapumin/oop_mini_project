@@ -36,6 +36,7 @@ public class Calemp {
             Set<String> uniqueTableNumbers = new HashSet<>();
 
             Iterator<JSONObject> iterator = orderArray.iterator();
+
             while (iterator.hasNext()) {
                 JSONObject objectOrder = iterator.next();
                 table_no = (String) objectOrder.get("Customer_Table_No");
@@ -65,13 +66,13 @@ public class Calemp {
 
                     System.out.println(i + " Order: " + objectOrder.get("Product_Name") + " : "
                             + objectOrder.get("Product_Price"));
-                            sumprice += ((Double)objectOrder.get("Product_Price"));
+                    sumprice += ((Double) objectOrder.get("Product_Price"));
                     i += 1;
                 }
 
             }
-            System.out.println("Total : "+sumprice);
-            System.out.println("===================== End ======================");
+            System.out.println("Total : " + sumprice);
+            System.out.println("==================== = End ======================");
 
         } catch (IOException e) {
             e.printStackTrace();
