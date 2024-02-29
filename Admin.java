@@ -20,7 +20,8 @@ public class Admin {
         System.out.println("_________Admin_________");
         System.out.println("[1].Add Employee");
         System.out.println("[2].Add Admin");
-        System.out.println("[3].Back");
+        System.out.println("[3].Add Product");
+        System.out.println("[4].Back");
         System.out.println("_______________________");
         System.out.println("Type ur choice...");
 
@@ -35,6 +36,11 @@ public class Admin {
             System.out.println("eiei ");
 
         } else if (choice.equalsIgnoreCase("3")) {
+            // clearConsole();
+            Addproduct addp = new Addproduct();
+            addp.menuaddProduct();
+            // break;
+        } else if (choice.equalsIgnoreCase("4")) {
             // clearConsole();
             Index indexpage = new Index();
             indexpage.Mainpage();
@@ -51,6 +57,7 @@ public class Admin {
         try {
             File employeeFile = new File("./employee.json");
             JSONArray employeeArray = new JSONArray();
+            
             if (employeeFile.exists() && employeeFile.length() > 0) {
                 Reader readEmp = new FileReader(employeeFile);
                 JSONArray existingEmployee = (JSONArray) parser.parse(readEmp);
@@ -78,7 +85,6 @@ public class Admin {
             System.out.println("=============================================");
 
             empman.printInfo();
-
 
             JSONObject employeeObj = new JSONObject();
             employeeObj.put("Emp_no", empman.getEmpno());

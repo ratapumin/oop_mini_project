@@ -67,6 +67,7 @@ public class Cus2product {
                 System.out.println("========== Enter Information youself ===========");
 
                 Scanner input = new Scanner(System.in);
+                
                 System.out.print("Enter you Name : ");
                 String cus_name = input.nextLine();
 

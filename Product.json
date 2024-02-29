@@ -2,17 +2,25 @@
     {
         "Yum": [
             {
-                "Product_Status": "Pass",
+                "Product_Status": "PASS",
                 "Product_Price": 299.0,
                 "Product_Name": "yum Pa Duk",
                 "Product_Type": "Y",
                 "Product_No": 2001,
                 "Product_Stock": 10
+            },
+            {
+                "Product_Status": "PASS",
+                "Product_Price": 60.0,
+                "Product_Name": "Mango Salad",
+                "Product_Type": "Y",
+                "Product_No": 2002,
+                "Product_Stock": 5
             }
         ],
         "Tum": [
             {
-                "Product_Status": "Pass",
+                "Product_Status": "PASS",
                 "Product_Price": 45.0,
                 "Product_Name": "Tum Pu Pa Rar",
                 "Product_Type": "T",
@@ -20,7 +28,7 @@
                 "Product_Stock": 10
             },
             {
-                "Product_Status": "Pass",
+                "Product_Status": "PASS",
                 "Product_Price": 40.0,
                 "Product_Name": "Tum Thi",
                 "Product_Type": "T",
@@ -28,7 +36,7 @@
                 "Product_Stock": 10
             },
             {
-                "Product_Status": "Pass",
+                "Product_Status": "PASS",
                 "Product_Price": 40.0,
                 "Product_Name": "Tum Thi",
                 "Product_Type": "T",
@@ -36,12 +44,36 @@
                 "Product_Stock": 10
             },
             {
-                "Product_Status": "Pass",
+                "Product_Status": "PASS",
                 "Product_Price": 40.0,
                 "Product_Name": "Tum Thi",
                 "Product_Type": "T",
                 "Product_No": 1004,
                 "Product_Stock": 10
+            },
+            {
+                "Product_Status": "PASS",
+                "Product_Price": 50.0,
+                "Product_Name": "Tum Sua",
+                "Product_Type": "T",
+                "Product_No": 1005,
+                "Product_Stock": 10
+            },
+            {
+                "Product_Status": "PASS",
+                "Product_Price": 55.0,
+                "Product_Name": "Spicy Corn Salad with Salted Egg",
+                "Product_Type": "T",
+                "Product_No": 1006,
+                "Product_Stock": 6
+            },
+            {
+                "Product_Status": "pass",
+                "Product_Price": 80.0,
+                "Product_Name": "Spicy Green Papaya Salad with Fresh Shrimp",
+                "Product_Type": "T",
+                "Product_No": 1007,
+                "Product_Stock": 4
             }
         ]
     }
