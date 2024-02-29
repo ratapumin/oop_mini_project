@@ -21,12 +21,12 @@ public class Cus2product {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n_______ETFOODORDERNG_______");
-            System.out.println("1.'Show menu'");
-            System.out.println("2.'My Bill'");
-            System.out.println("3. Return main menu");
+            System.out.println("=================== Cutomer ===================");
+            System.out.println("1: Show menu");
+            System.out.println("2: My Bill'");
+            System.out.println("3: Return main menu");
             System.out.println("___________________________");
-            System.out.println("\nType ur choice... ");
+            System.out.print("Enter your List : ");
 
             String choice = scanner.next();
 
@@ -67,20 +67,20 @@ public class Cus2product {
                 System.out.println("========== Enter Information youself ===========");
 
                 Scanner input = new Scanner(System.in);
-                System.out.println("Enter you Name : ");
+                System.out.print("Enter you Name : ");
                 String cus_name = input.nextLine();
-                cus.setName(cus_name);
 
-                System.out.println("Enter you Phone Number : ");
+                System.out.print("Enter you Phone Number : ");
                 String cus_pnumber = input.nextLine();
-                cus.setPnumber(cus_pnumber);
 
-                System.out.println("Enter you Table No : ");
+                System.out.print("Enter you Table No : ");
                 String cus_table_no = input.nextLine();
-                cus.setTableno(cus_table_no);
 
+                cus.setName(cus_name);
+                cus.setPnumber(cus_pnumber);
+                cus.setTableno(cus_table_no);
                 cus.calDate();
-                System.out.println("=============================================");
+
 
                 cus.printInfo();
 
@@ -167,7 +167,7 @@ public class Cus2product {
 
             System.out.println("================== Select ===================");
             System.out.println("Out page Menu Please Write '0' ");
-            System.out.println("Select Food : ");
+            System.out.print("Select Food : ");
             product_no = input.nextLine();
 
             if (product_no.equalsIgnoreCase("0")) {

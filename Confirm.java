@@ -82,7 +82,7 @@ public class Confirm {
 
         JSONArray confirmedItems = new JSONArray(); // Create an array to store confirmed items
         JSONArray confirmarray = new JSONArray();
-
+        clearConsole();
         System.out.println("========== Confirm Order Successfully ==========");
         try {
             File confirmOrderFile = new File("./confirmOrder.json");
@@ -151,6 +151,24 @@ public class Confirm {
         System.out.println("Thank you for using the service.");
         Index indexpage = new Index();
         indexpage.Mainpage();
+    }
+
+    public static void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                // For Windows
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // For Unix/Linux
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (final Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+        }
     }
 }
 
