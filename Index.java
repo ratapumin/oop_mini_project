@@ -36,8 +36,8 @@ public class Index {
                     break;
                 }
                 case 3: {
-                    Admin admin = new Admin();
-                    admin.admin();
+                    Adminpage admin = new Adminpage();
+                    admin.adminLogin();
                     break;
                 }
                 case 4: {

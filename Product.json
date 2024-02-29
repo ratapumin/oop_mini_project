@@ -16,6 +16,14 @@
                 "Product_Type": "Y",
                 "Product_No": 2002,
                 "Product_Stock": 5
+            },
+            {
+                "Product_Status": "PASS",
+                "Product_Price": 70.0,
+                "Product_Name": "Glass noodle salad",
+                "Product_Type": "Y",
+                "Product_No": 2003,
+                "Product_Stock": 7
             }
         ],
         "Tum": [

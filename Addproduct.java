@@ -13,10 +13,11 @@ import org.json.simple.parser.ParseException;
 import org.json.simple.parser.ParseException;
 
 public class Addproduct {
-    public static void menuaddProduct() {
-
+    public static void menuaddProduct(Admin admin) {
+        admin.printInfo();
         Scanner input = new Scanner(System.in);
         int choice;
+        Addproduct addProduct = new Addproduct();
         while (true) {
             System.out.println("=============================================");
             System.out.println("=============== Page Add Product ============");
@@ -29,8 +30,8 @@ public class Addproduct {
                 Addproduct add = new Addproduct();
                 add.addproduct();
             } else if (String.valueOf(choice).equalsIgnoreCase("2")) {
-                Admin admin = new Admin();
-                admin.admin();
+                Adminpage add = new Adminpage();
+                add.admin(admin);
 
             } else {
                 System.out.println("Invalid choice. Please try again.");
@@ -67,7 +68,8 @@ public class Addproduct {
             input.nextLine();
 
             System.out.print("Enter you Product Status : ");
-            String product_status = input.nextLine().toUpperCase();;
+            String product_status = input.nextLine().toUpperCase();
+            ;
 
             System.out.print("Enter you Product Type : ");
             String product_type = input.nextLine().toUpperCase();
