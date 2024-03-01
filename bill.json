@@ -1,0 +1,22 @@
+[
+  {
+    "Order": [
+      {
+        "Product_Price": 45.0,
+        "Product_Name": "Tum Pu Pa Rar"
+      },
+      {
+        "Product_Price": 299.0,
+        "Product_Name": "yum Pa Duk"
+      }
+    ],
+    "Customer_Table_No": "T_01",
+    "Bill_net": 319.92,
+    "Customer_Name": "Whax",
+    "Bill_Vat": 24.08,
+    "Bill_No": "Bill002",
+    "Customer_Confirm_Date": "Fri Mar 01 17:50:09 ICT 2024",
+    "Bill_Total": 344.0,
+    "Customer_Phone_number": "0621645650"
+  }
+]

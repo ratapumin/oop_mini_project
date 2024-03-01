@@ -80,7 +80,7 @@ public class Confirm {
         double sumprice = 0.0;
         int i = 1;
 
-        JSONArray confirmedItems = new JSONArray(); // Create an array to store confirmed items
+        JSONArray confirmedItems = new JSONArray();
         JSONArray confirmarray = new JSONArray();
         clearConsole();
         System.out.println("========== Confirm Order Successfully ==========");
@@ -103,7 +103,9 @@ public class Confirm {
                 if (objectOrder != null && cus.getTableno().equals(objectOrder.get("Customer_Table_No"))) {
                     System.out.println(i + " : " + "Product Name: " + objectOrder.get("Product_Name") + " : "
                             + objectOrder.get("Product_Price"));
+                            
                     JSONObject confirmedItem = new JSONObject();
+
                     confirmedItem.put("Product_Name", objectOrder.get("Product_Name"));
                     confirmedItem.put("Product_Price", objectOrder.get("Product_Price"));
 
