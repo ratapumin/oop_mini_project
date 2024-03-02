@@ -23,8 +23,9 @@ public class Cus2product {
         while (true) {
             System.out.println("=================== Cutomer ===================");
             System.out.println("1: Show menu");
-            System.out.println("2: My Bill'");
-            System.out.println("3: Return main menu");
+            System.out.println("2: My Order'");
+            System.out.println("3: View Bill'");
+            System.out.println("4: Return main menu");
             System.out.println("___________________________");
             System.out.print("Enter your List : ");
 
@@ -37,7 +38,12 @@ public class Cus2product {
             } else if (choice.equalsIgnoreCase("2")) {
                 Confirm conn = new Confirm();
                 conn.confirmOrder(cus);
+                // Mybill();
             } else if (choice.equalsIgnoreCase("3")) {
+                // Confirm conn = new Confirm();
+                // conn.confirmOrder(cus);
+                Mybill();
+            } else if (choice.equalsIgnoreCase("4")) {
                 clearConsole();
                 Index indexpage = new Index();
                 indexpage.Mainpage();
@@ -67,7 +73,7 @@ public class Cus2product {
                 System.out.println("========== Enter Information youself ===========");
 
                 Scanner input = new Scanner(System.in);
-                
+
                 System.out.print("Enter you Name : ");
                 String cus_name = input.nextLine();
 
@@ -81,7 +87,6 @@ public class Cus2product {
                 cus.setPnumber(cus_pnumber);
                 cus.setTableno(cus_table_no);
                 cus.calDate();
-
 
                 cus.printInfo();
 
@@ -301,5 +306,63 @@ public class Cus2product {
             // Handle exceptions
             e.printStackTrace();
         }
+    }
+
+    public static void Mybill() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ur phone number for watch ur bill :");
+        String phong = scanner.nextLine();
+
+        JSONParser parser = new JSONParser();
+        try {
+            Reader reader = new FileReader("./confirmOrder.json");
+            JSONArray billArray = (JSONArray) parser.parse(reader);
+
+            Iterator<JSONObject> iterator = billArray.iterator();
+            while (iterator.hasNext()) {
+                JSONObject billObject = iterator.next();
+
+                if (billObject != null
+                        && phong.equals(String.valueOf(billObject.get("Customer_Phone_name")))) {
+
+                    // String billNo = (String) billObject.get("Customer_Table_No");
+                    String customerName = (String) billObject.get("Customer_Name");
+                    String tableNo = (String) billObject.get("Customer_Table_No");
+                    double Total = (double) billObject.get("Total");
+                    String status = (String) billObject.get("Customer_Confirm_Status");
+                    String tel = (String) billObject.get("Customer_Phone_name");
+                    String date = (String) billObject.get("Customer_Confirm_Date");
+
+                    System.out.println("Table No: " + tableNo);
+                    System.out.println("Customer Name: " + customerName);
+                    System.out.println("Status: " + status);
+                    System.out.println("Tel: " + tel);
+                    System.out.println("Date: " + date);
+                    // System.out.println("Table No: " + tableNo);
+                    System.out.println("Total: " + Total);
+
+                    JSONArray orderArray = (JSONArray) billObject.get("Confirmed_Items");
+                    Iterator<JSONObject> orderIterator = orderArray.iterator();
+                    while (orderIterator.hasNext()) {
+                        JSONObject orderItem = orderIterator.next();
+
+                        double productPrice = (double) orderItem.get("Product_Price");
+                        String productName = (String) orderItem.get("Product_Name");
+
+                        System.out.println("Product Name: " + productName);
+                        System.out.println("Product Price: " + productPrice);
+                    }
+                    System.out.println("-------------------");
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace(); // Print the exception for debugging
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 }

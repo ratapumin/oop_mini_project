@@ -1,9 +1,1 @@
-[
-    {
-        "Admin_Phone_Name": "0621645650",
-        "Admin_Pass": "admin",
-        "Admin_No": "A001",
-        "Admin_Id": "admin",
-        "Admin_Name": "Ratapumin"
-    }
-]
+[{"Admin_Phone_Name":"0621645650","Admin_Pass":"admin","Admin_No":"A001","Admin_Id":"admin","Admin_Name":"Ratapumin"},{"Admin_Phone_Name":"0922154698","Admin_Pass":"nier","Admin_No":"A002","Admin_Id":"nier","Admin_Name":"Nier"}]

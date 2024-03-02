@@ -24,6 +24,14 @@
                 "Product_Type": "Y",
                 "Product_No": 2003,
                 "Product_Stock": 7
+            },
+            {
+                "Product_Status": "PASS",
+                "Product_Price": 70.0,
+                "Product_Name": "Salted Egg Spicy Salad ",
+                "Product_Type": "Y",
+                "Product_No": 2004,
+                "Product_Stock": 5
             }
         ],
         "Tum": [
